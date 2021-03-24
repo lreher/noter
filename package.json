@@ -5,20 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild index.js --bundle --outfile=bundle.js"
+    "build": "esbuild client/index.js --bundle --outfile=public/bundle.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lreher/noter.git"
   },
-  "author": "",
+  "author": "Lucas Reher",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lreher/noter/issues"
   },
   "homepage": "https://github.com/lreher/noter#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "esbuild": "^0.9.6",
+    "find-my-way": "^4.0.0",
     "mithril": "^2.0.4"
   }
 }

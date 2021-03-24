@@ -1900,7 +1900,7 @@
     module.exports = m2;
   });
 
-  // index.js
+  // client/index.js
   var import_mithril = __toModule(require_mithril());
   import_mithril.default.render(document.body, "hello world");
 })();
