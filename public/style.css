@@ -1,0 +1,24 @@
+.app {
+    background-color: #f3b82fa9;
+    
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body {
+    width: 100vw;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1 {
+    font-family: 'Chango', cursive;
+}

@@ -1272,18 +1272,18 @@
         }
       }
       redraw.sync = sync;
-      function mount(root, component) {
+      function mount(root2, component) {
         if (component != null && component.view == null && typeof component !== "function") {
           throw new TypeError("m.mount(element, component) expects a component, not a vnode");
         }
-        var index = subscriptions.indexOf(root);
+        var index = subscriptions.indexOf(root2);
         if (index >= 0) {
           subscriptions.splice(index, 2);
-          render(root, [], redraw);
+          render(root2, [], redraw);
         }
         if (component != null) {
-          subscriptions.push(root, component);
-          render(root, Vnode(component), redraw);
+          subscriptions.push(root2, component);
+          render(root2, Vnode(component), redraw);
         }
       }
       return {mount, redraw};
@@ -1694,8 +1694,8 @@
       }
       var currentResolver = sentinel, component, attrs, currentPath, lastUpdate;
       var SKIP = route.SKIP = {};
-      function route(root, defaultRoute, routes) {
-        if (root == null)
+      function route(root2, defaultRoute, routes) {
+        if (root2 == null)
           throw new Error("Ensure the DOM element that was passed to `m.route` is not undefined");
         var state = 0;
         var compiled = Object.keys(routes).map(function(route2) {
@@ -1797,7 +1797,7 @@
           };
           $window.addEventListener("hashchange", resolveRoute, false);
         }
-        return mountRedraw.mount(root, {
+        return mountRedraw.mount(root2, {
           onbeforeupdate: function() {
             state = state ? 2 : 1;
             return !(!state || sentinel === currentResolver);
@@ -1902,5 +1902,24 @@
 
   // client/index.js
   var import_mithril = __toModule(require_mithril());
-  import_mithril.default.render(document.body, "hello world");
+  var root = document.body;
+  var app = createApp();
+  import_mithril.default.render(root, app.view());
+  function createApp() {
+    return {
+      view: () => {
+        return (0, import_mithril.default)("div", {class: "app"}, [
+          (0, import_mithril.default)("div", {class: "title"}, [
+            (0, import_mithril.default)("h1", "Noter")
+          ]),
+          (0, import_mithril.default)("div", {class: "body"}, [
+            (0, import_mithril.default)("div", {class: "options"}, [
+              (0, import_mithril.default)("h4", {class: "my-notebooks"}, "My notebooks"),
+              (0, import_mithril.default)("h4", {class: "new-notebook"}, "New notebook")
+            ])
+          ])
+        ]);
+      }
+    };
+  }
 })();

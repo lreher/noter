@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild client/index.js --bundle --outfile=public/bundle.js"
+    "build_jsx": "esbuild client/index.jsx --jsx-factory=m --jsx-fragment=Fragment --outfile=public/bundle.js --bundle",
+    "build": "esbuild client/index.js --outfile=public/bundle.js --bundle",
+    "watch": "esbuild client/index.js --bundle --outfile=public/bundle.js --watch"
   },
   "repository": {
     "type": "git",
